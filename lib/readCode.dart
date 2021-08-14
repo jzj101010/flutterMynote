@@ -12,7 +12,8 @@ class ReadCode {
     var filePath = "study.dart";
     try {
       File file = new File(filePath);
-      content = await file.readAsString();
+     var  content = await file.readAsString();
+
       print(content);
     } catch (e) {
       print(e);

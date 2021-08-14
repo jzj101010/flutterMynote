@@ -67,6 +67,9 @@ class MyStudyWidget extends StatelessWidget {
       case "TextField":
         pushWidget = TextStudy();
         break;
+      case "Image":
+        pushWidget = StackStudy();
+        break;
     }
 
     Navigator.push(context, MaterialPageRoute<void>(
@@ -237,8 +240,8 @@ class StackStudy extends StatelessWidget {
       children: <Widget>[
         Image(
             fit: BoxFit.fitWidth,
-            width: double.infinity,
-            height: double.infinity,
+            // width: double.infinity,
+            // height: double.infinity,
             image: NetworkImage(
                 "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx3.sinaimg.cn%2Flarge%2F547f46d9ly4gsqmhfbuf1j20u00g2whd.jpg&refer=http%3A%2F%2Fwx3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631331999&t=06fd511be31597b7d4c6c526fd103ec4")),
         Text(
