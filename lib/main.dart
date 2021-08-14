@@ -162,7 +162,6 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       var response = await Dio().get('https://wanandroid.com/wenda/comments/14500/json');
       print(response);
-
       showDialog(
           context: context,
           builder: (BuildContext context) {
