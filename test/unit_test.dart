@@ -1,6 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() async {
+void main() {
+
+  test("testHttp", () {
+    getHttp();
+  });
+
+
   test("testFuture", () {
 
     Future.delayed(Duration(milliseconds:1000),(){
@@ -19,4 +26,18 @@ void main() async {
         .then((value) => print("我不是了"));
 
   });
+
+
+
 }
+
+void getHttp() async {
+  print("GETHTTP");
+  try {
+    var response = await Dio().get('http://www.google.com');
+    print(response);
+  } catch (e) {
+    print(e);
+  }
+}
+

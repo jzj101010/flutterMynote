@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mynote/mine.dart';
 import 'package:mynote/study.dart';
@@ -137,7 +138,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
           },
         )
-
       ],
         ///主轴居中,即是竖直向居中
         mainAxisAlignment: MainAxisAlignment.end,
@@ -148,11 +148,29 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       } ,controller: _pageController,),// _pageList[_currentIndex],
       floatingActionButton:_currentIndex==0? FloatingActionButton(
-        onPressed: _incrementCounter2,
+        onPressed: _getHttpData,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ):null,// This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+
+
+  void _getHttpData() async{
+
+    try {
+      var response = await Dio().get('https://wanandroid.com/wenda/comments/14500/json');
+      print(response);
+
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(content:Container(width:500,height: 500,child:ListView(children: [Text(response.toString())],),),actions: [Text("Dio请求\n https://wanandroid.com/wenda/comments/14500/json 结果")],);
+          });
+    } catch (e) {
+      print(e);
+    }
   }
 }
 
