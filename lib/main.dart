@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mynote/mine.dart';
 import 'package:mynote/study.dart';
 
@@ -11,11 +12,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp, //只能纵向
+      DeviceOrientation.portraitDown,//只能纵向
+    ]);
+
     return MaterialApp(
       title: 'My note',
       theme: ThemeData(
