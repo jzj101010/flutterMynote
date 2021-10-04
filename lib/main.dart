@@ -12,8 +12,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
-
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -70,7 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
     MyNoteWidget(),
     MyStudyWidget(),
     MyMineWidget(),
-
   ];
 
   final List<BottomNavigationBarItem> _bottomList = [

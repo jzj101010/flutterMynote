@@ -1,32 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:mynote/readCode.dart';
 
-class MyStudyWidget extends StatelessWidget {
-  Map listMap = {
-    "常用布局布局的 Widget": "isTitleUnEnableClick",
-    "Container": "只有⼀个⼦ Widget。默认充满，包含了padding、margin、color、宽⾼、decoration 等配置。",
-    "Padding": "只有⼀个⼦ Widget。只⽤于设置Padding，常⽤于嵌套child，给child设置padding。",
-    "Center": "只有⼀个⼦ Widget。只⽤于居中显示，常⽤于嵌套child，给child设置居中。",
-    "Stack": "可以有多个⼦ Widget。 ⼦Widget堆叠在⼀起。",
-    "Column": "可以有多个⼦ Widget。垂直布局。",
-    "Row": "可以有多个⼦ Widget。⽔平布局。",
-    "Expanded": "只有⼀个⼦ Widget。在 Column 和 Row 中充满。flex默认为1(比重)",
-    "ListView": "可以有多个⼦ Widget",
-    "交互显示的和完整⻚⾯呈现的 Widget": "isTitleUnEnableClick",
-    "MaterialApp": "⼀般作为APP顶层的主⻚⼊⼝，可配置主题，多语⾔，路由等",
-    "Scaffold":
-        "⼀般⽤户⻚⾯的承载Widget，包含appbar、snackbar、drawer等material design的设定。（脚手架）",
-    "Appbar": "⼀般⽤于Scaffold的appbar ，内有标题，⼆级⻚⾯返回按键等，当然不⽌这些，tabbar等也会需要它 。",
-    "Text": "显示⽂本，⼏乎都会⽤到，主要是通过style设置TextStyle来设置字体样式等。",
-    "RichText": "富⽂本，通过设置 TextSpan ，可以拼接出富⽂本场景",
-    "TextField":
-        "⽂本输⼊框 ： new TextField(controller: //⽂本控制器, obscureText:hint⽂本)",
-    "Image":
-        "图⽚加载: new FadeInImage.assetNetwork( placeholder: \"预览图\", fit:BoxFit.fitWidth, image: \"url\")",
-    "FlatButton":
-        "按键点击: new FlatButton(onPressed: () {},child: new Container())",
-  };
+import 'httpdemo.dart';
 
+Map listMap = {
+  "常用布局布局的 Widget": "isTitleUnEnableClick",
+  "Container": "只有⼀个⼦ Widget。默认充满，包含了padding、margin、color、宽⾼、decoration 等配置。",
+  "Padding": "只有⼀个⼦ Widget。只⽤于设置Padding，常⽤于嵌套child，给child设置padding。",
+  "Center": "只有⼀个⼦ Widget。只⽤于居中显示，常⽤于嵌套child，给child设置居中。",
+  "Stack": "可以有多个⼦ Widget。 ⼦Widget堆叠在⼀起。",
+  "Column": "可以有多个⼦ Widget。垂直布局。",
+  "Row": "可以有多个⼦ Widget。⽔平布局。",
+  "Expanded": "只有⼀个⼦ Widget。在 Column 和 Row 中充满。flex默认为1(比重)",
+  "ListView": "可以有多个⼦ Widget--列表",
+  "GridView": "可以有多个⼦ Widget--网格",
+  "Wrap": "可以有多个子 Widget --流布局，主方向(mainAxis)上空间不足时，能够自动换行",
+  "交互显示的和完整⻚⾯呈现的 Widget": "isTitleUnEnableClick",
+  "MaterialApp": "⼀般作为APP顶层的主⻚⼊⼝，可配置主题，多语⾔，路由等",
+  "Scaffold":
+      "⼀般⽤户⻚⾯的承载Widget，包含appbar、snackbar、drawer等material design的设定。（脚手架）",
+  "Appbar": "⼀般⽤于Scaffold的appbar ，内有标题，⼆级⻚⾯返回按键等，当然不⽌这些，tabbar等也会需要它 。",
+  "Text": "显示⽂本，⼏乎都会⽤到，主要是通过style设置TextStyle来设置字体样式等。",
+  "RichText": "富⽂本，通过设置 TextSpan ，可以拼接出富⽂本场景",
+  "TextField": "⽂本输⼊框 ： new TextField(controller: //⽂本控制器, obscureText:hint⽂本)",
+  "Image":
+      "图⽚加载: new FadeInImage.assetNetwork( placeholder: \"预览图\", fit:BoxFit.fitWidth, image: \"url\")",
+  "FlatButton": "按键点击: new FlatButton(onPressed: () {},child: new Container())",
+  "网络请求demo": "isTitleUnEnableClick",
+  "http 库":"网络请求库",
+
+
+};
+
+class MyStudyWidget extends StatelessWidget {
   void pushPage(BuildContext context, String string) {
     if (listMap[string] == "isTitleUnEnableClick") {
       return;
@@ -58,6 +64,9 @@ class MyStudyWidget extends StatelessWidget {
       case "ListView":
         pushWidget = MyStudyWidget();
         break;
+      case "GridView":
+        pushWidget = GridViewStudy();
+        break;
       case "Text":
         pushWidget = TextStudy();
         break;
@@ -70,6 +79,11 @@ class MyStudyWidget extends StatelessWidget {
       case "Image":
         pushWidget = StackStudy();
         break;
+
+      case "http 库":
+        pushWidget = HttpStudyWidget();
+        break;
+
     }
 
     Navigator.push(context, MaterialPageRoute<void>(
@@ -396,5 +410,32 @@ class TextStudy extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+///Gridv    Start
+class GridViewStudy extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        itemCount: listMap.keys.length,
+        itemBuilder: (context, index) {
+          return Container(
+            ///透明⿊⾊遮罩
+            decoration: BoxDecoration(
+
+              ///弧度为4.0
+                borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+
+                ///设置了decoration的color，就不能设置Container的color。
+                color: Colors.white,
+
+                ///边框
+                border: Border.all(color: const Color(0xff3075fe), width: 1))
+            ,child: Center(child: Text("第" + index.toString() + "个grid"),));
+          // return Text(listMap.keys.toList()[index]);
+        },
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4));
   }
 }
