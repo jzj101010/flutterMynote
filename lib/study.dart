@@ -24,7 +24,8 @@ Map listMap = {
   "RichText": "富⽂本，通过设置 TextSpan ，可以拼接出富⽂本场景",
   "TextField": "⽂本输⼊框 ： new TextField(controller: //⽂本控制器, obscureText:hint⽂本)",
   "Image":
-      "图⽚加载: new FadeInImage.assetNetwork( placeholder: \"预览图\", fit:BoxFit.fitWidth, image: \"url\")",
+
+  "图⽚加载: new FadeInImage.assetNetwork( placeholder: \"预览图\", fit:BoxFit.fitWidth, image: \"url\")",
   "FlatButton": "按键点击: new FlatButton(onPressed: () {},child: new Container())",
   "网络请求demo": "isTitleUnEnableClick",
   "http 库":"网络请求库",
