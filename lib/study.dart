@@ -18,6 +18,7 @@ Map listMap = {
   "交互显示的和完整⻚⾯呈现的 Widget": "isTitleUnEnableClick",
   "MaterialApp": "⼀般作为APP顶层的主⻚⼊⼝，可配置主题，多语⾔，路由等",
   "Scaffold":
+
       "⼀般⽤户⻚⾯的承载Widget，包含appbar、snackbar、drawer等material design的设定。（脚手架）",
   "Appbar": "⼀般⽤于Scaffold的appbar ，内有标题，⼆级⻚⾯返回按键等，当然不⽌这些，tabbar等也会需要它 。",
   "Text": "显示⽂本，⼏乎都会⽤到，主要是通过style设置TextStyle来设置字体样式等。",
